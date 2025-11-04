@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HammerDCat | Flattened Stuffed Cats</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #5d4037;
+        }
+        
+        /* Header */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #5d4037;
+        }
+        
+        .logo span {
+            color: #ff9800;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #ff9800;
+        }
+        
+        .mobile-menu {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /* Hero section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1576377388678-8fb3cc7b5b2e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #ff9800;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #f57c00;
+        }
+        
+        /* Featured products */
+        .featured {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #5d4037;
+        }
+        
+        .section-title p {
+            max-width: 600px;
+            margin: 0 auto;
+            color: #666;
+        }
+        
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .product-img {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .product-card:hover .product-img img {
+            transform: scale(1.05);
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .price {
+            color: #ff9800;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        /* About section */
+        .about {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+        
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-img {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: #5d4037;
+        }
+        
+        .about-content p {
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
+        /* Process section */
+        .process {
+            padding: 80px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .step-card {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            background-color: #ff9800;
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+        
+        .step-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #5d4037;
+        }
+        
+        /* Contact section */
+        .contact {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        
+        .contact-info h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: #5d4037;
+        }
+        
+        .contact-info p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+        
+        .contact-details {
+            margin-top: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .contact-item i {
+            width: 40px;
+            height: 40px;
+            background-color: #ff9800;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: #fff;
+        }
+        
+        form {
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #5d4037;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            border-color: #ff9800;
+            outline: none;
+        }
+        
+        textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #5d4037;
+            color: #fff;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo span {
+            color: #ff9800;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #ff9800;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #e0e0e0;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #ff9800;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: #ff9800;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #e0e0e0;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-container, .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-img {
+                order: -1;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                background-color: #fff;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                transform: translateY(-150%);
+                transition: transform 0.3s;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .products {
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            }
+        }
+
+        /* Shopping cart styles */
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #ff9800;
+            color: #fff;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        .cart-dropdown {
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            width: 300px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            padding: 20px;
+            display: none;
+            z-index: 100;
+        }
+
+        .cart-dropdown.active {
+            display: block;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+
+        .cart-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+            color: #ff9800;
+            font-weight: 600;
+        }
+
+        .cart-item-remove {
+            color: #f44336;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        .cart-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .cart-btn {
+            flex: 1;
+            padding: 10px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .checkout-btn {
+            background-color: #ff9800;
+            color: #fff;
+        }
+
+        .clear-btn {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Hammer<span>DCat</span></a>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#process">Our Process</a></li>
+                    <li><a href="#catdrone">CatDrone</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                    
+                    <!-- Cart Dropdown -->
+                    <div class="cart-dropdown">
+                        <h3>Your Cart</h3>
+                        <div class="cart-items">
+                            <!-- Cart items will be added here dynamically -->
+                        </div>
+                        <div class="cart-total">
+                            <span>Total:</span>
+                            <span>$0.00</span>
+                        </div>
+                        <div class="cart-buttons">
+                            <button class="cart-btn checkout-btn">Checkout</button>
+                            <button class="cart-btn clear-btn">Clear</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Perfectly Flattened Stuffed Cats</h1>
+                <p>We create unique, perfectly flattened stuffed cats that bring joy to your life. Each cat is carefully hammered to perfection using our proprietary flattening technology.</p>
+                <a href="#products" class="btn">Shop Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured" id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Flattened Felines</h2>
+                <p>Explore our collection of perfectly bonked stuffed cats, each with its own unique flatness and charm.</p>
+            </div>
+            <div class="products">
+                <div class="product-card" data-id="1" data-name="Flattened Tabby" data-price="39.99">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Flattened Tabby Cat" style="transform: scaleY(0.3); filter: blur(0.5px);">
+                    </div>
+                    <div class="product-info">
+                        <h3>Flattened Tabby</h3>
+                        <p>A traditional tabby cat, perfectly bonked to 2cm thickness. Slides under doors with ease!</p>
+                        <div class="price">$39.99</div>
+                        <button class="btn add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-id="2" data-name="Compressed Siamese" data-price="44.99">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Compressed Siamese Cat" style="transform: scaleY(0.3); filter: blur(0.5px);">
+                    </div>
+                    <div class="product-info">
+                        <h3>Compressed Siamese</h3>
+                        <p>Elegant Siamese cat, carefully hammered to perfection. So flat it fits in a manila envelope!</p>
+                        <div class="price">$44.99</div>
+                        <button class="btn add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-id="3" data-name="Pancaked Persian" data-price="49.99">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Pancaked Persian Cat" style="transform: scaleY(0.3); filter: blur(0.5px);">
+                    </div>
+                    <div class="product-info">
+                        <h3>Pancaked Persian</h3>
+                        <p>Extra fluffy Persian cat, now extra flat! The perfect bookmark for oversized books.</p>
+                        <div class="price">$49.99</div>
+                        <button class="btn add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-id="4" data-name="Squished Kitten" data-price="34.99">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1548802673-380ab8ebc7b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Squished Kitten" style="transform: scaleY(0.3); filter: blur(0.5px);">
+                    </div>
+                    <div class="product-info">
+                        <h3>Squished Kitten</h3>
+                        <p>Adorable kitten, now 70% flatter! Perfect for sliding under refrigerators to catch dust bunnies.</p>
+                        <div class="price">$34.99</div>
+                        <button class="btn add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-id="5" data-name="Flattened Calico" data-price="42.99">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1561948955-570b270e7c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Flattened Calico Cat" style="transform: scaleY(0.3); filter: blur(0.5px);">
+                    </div>
+                    <div class="product-info">
+                        <h3>Flattened Calico</h3>
+                        <p>Colorful calico cat, now in 2D! Makes an excellent place mat or decorative wall hanging.</p>
+                        <div class="price">$42.99</div>
+                        <button class="btn add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-id="6" data-name="Custom Squashed Cat" data-price="59.99">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1495360010541-f48722b34f7d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Custom Squashed Cat" style="transform: scaleY(0.3); filter: blur(0.5px);">
+                    </div>
+                    <div class="product-info">
+                        <h3>Custom Squashed Cat</h3>
+                        <p>Design your own flattened cat! Choose colors, patterns, and exact thickness (1-3cm available).</p>
+                        <div class="price">$59.99</div>
+                        <button class="btn add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-container">
+                <div class="about-content">
+                    <h2>About HammerDCat</h2>
+                    <p>HammerDCat was born from a revolutionary idea: what if stuffed cats were flat? What began as an accident in our founder's garage (when a hammer was accidentally dropped on a stuffed cat) has grown into a beloved brand known for its perfectly flattened stuffed cats.</p>
+                    <p>Each of our flattened cats is precisely bonked with our proprietary HammerMatic 3000™ technology. We use only the finest, most compressible materials to ensure that our cats are not only adorably flat but also durable and safe.</p>
+                    <p>Our team of skilled flatteners takes pride in creating perfectly compressed cats that capture the unique charm of a cat that has just had a cartoon anvil dropped on it. Whether you're looking for a classic tabby pancake, an elegant Siamese flatbread, or a custom-designed cat pressed to your exact specifications, we can bring your flattened vision to life.</p>
+                    <p>At HammerDCat, we believe in creating more than just flat toys – we create compressed companions that slide perfectly under doors, fit in envelopes, and become cherished members of your family.</p>
+                </div>
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1511275539165-cc46b1ee89bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Our Workshop">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process" id="process">
+        <div class="container">
+            <div class="section-title">
+                <h2>How We Process Your Cat</h2>
+                <p>Witness our revolutionary cat flattening process that transforms ordinary cats into perfectly compressed stuffed companions.</p>
+            </div>
+            <div style="text-align: center; margin-bottom: 40px;">
+                <img src="https://raw.githubusercontent.com/hammardcat/hammardcat.github.io/main/flattened-cat.svg" alt="Flattened Cat" style="width: 80%; max-width: 600px; height: auto; border: 1px solid #eee; padding: 20px; border-radius: 10px; background: white;">
+                <p style="margin-top: 15px; font-style: italic; color: #666;">The BONK™ Process: From Fluffy to Flat in Seconds!</p>
+            </div>
+            <div class="steps">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Selection</h3>
+                    <p>We carefully select premium cat shapes and materials that are perfect for the flattening process. Only the best cats are chosen for hammering.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Preparation</h3>
+                    <p>Cats are prepared for flattening by removing any rigid components that might interfere with the perfect compression process.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>The Bonk</h3>
+                    <p>This is where the magic happens! Our master flatteners use our proprietary HammerMatic 3000™ to deliver the perfect bonk, compressing the cat to ideal flatness.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3>Compression Check</h3>
+                    <p>Each cat is carefully measured to ensure optimal flatness. If not flat enough, it goes back for additional bonking until perfection is achieved.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">5</div>
+                    <h3>Recovery Period</h3>
+                    <p>Flattened cats need time to adjust to their new dimensions. We let them rest in our specially designed compression chambers for 24 hours.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">6</div>
+                    <h3>Final Inspection</h3>
+                    <p>Every flattened cat undergoes a thorough inspection to ensure it meets our high standards of flatness, durability, and aesthetic appeal before being shipped to you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CatDrone Section -->
+    <section class="catdrone" id="catdrone" style="padding: 80px 0; background-color: #f2f2f2;">
+        <div class="container">
+            <div class="section-title">
+                <h2>CatDrone Conversion System</h2>
+                <p>Transform your flattened cat into an aerial surveillance system with our revolutionary CatDrone technology!</p>
+            </div>
+            
+            <div style="text-align: center; margin-bottom: 40px;">
+                <img src="https://raw.githubusercontent.com/hammardcat/hammardcat.github.io/main/catdrone-conversion.svg" alt="CatDrone Conversion" style="width: 90%; max-width: 800px; height: auto; border: 1px solid #ddd; padding: 20px; border-radius: 10px; background: white;">
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px;">
+                <div>
+                    <h3 style="color: #5d4037; margin-bottom: 20px; font-size: 1.8rem;">Why CatDrone?</h3>
+                    <p style="margin-bottom: 15px;">Our engineers asked a simple question: "What's better than a flattened cat?" The answer was obvious - a flattened cat that can fly!</p>
+                    <p style="margin-bottom: 15px;">The CatDrone Conversion System uses our already perfectly flattened cats as the ideal platform for drone technology. Their aerodynamic shape and lightweight construction make them perfect for flight.</p>
+                    <p style="margin-bottom: 15px;">Each CatDrone is equipped with a quadcopter propulsion system, HD camera, and remote control capabilities. Perfect for aerial photography, surveillance, or just impressing your neighbors!</p>
+                    <div style="margin-top: 30px;">
+                        <a href="#contact" class="btn">Order Your CatDrone Today</a>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="color: #5d4037; margin-bottom: 20px; font-size: 1.8rem;">CatDrone Features</h3>
+                    <ul style="list-style-type: none; padding: 0;">
+                        <li style="margin-bottom: 15px; padding-left: 30px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #ff9800; font-weight: bold;">✓</span> 
+                            <strong>Quadcopter Propulsion:</strong> Four high-speed motors provide stable flight
+                        </li>
+                        <li style="margin-bottom: 15px; padding-left: 30px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #ff9800; font-weight: bold;">✓</span> 
+                            <strong>Built-in Camera:</strong> 1080p HD camera for aerial photography
+                        </li>
+                        <li style="margin-bottom: 15px; padding-left: 30px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #ff9800; font-weight: bold;">✓</span> 
+                            <strong>20-Minute Flight Time:</strong> Lithium-ion battery for extended missions
+                        </li>
+                        <li style="margin-bottom: 15px; padding-left: 30px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #ff9800; font-weight: bold;">✓</span> 
+                            <strong>LED Navigation Lights:</strong> For night flights and added ambiance
+                        </li>
+                        <li style="margin-bottom: 15px; padding-left: 30px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #ff9800; font-weight: bold;">✓</span> 
+                            <strong>Remote Control:</strong> Simple smartphone app for intuitive piloting
+                        </li>
+                        <li style="margin-bottom: 15px; padding-left: 30px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #ff9800; font-weight: bold;">✓</span> 
+                            <strong>Return-to-Home Function:</strong> Automatically comes back when battery is low
+                        </li>
+                        <li style="margin-bottom: 15px; padding-left: 30px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #ff9800; font-weight: bold;">✓</span> 
+                            <strong>Realistic Meowing:</strong> Speakers emit authentic cat sounds while in flight
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="background-color: #fff; border-radius: 10px; padding: 30px; margin-top: 40px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);">
+                <h3 style="color: #5d4037; margin-bottom: 20px; font-size: 1.5rem; text-align: center;">CatDrone Pricing</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+                    <div style="text-align: center; padding: 20px; border: 1px solid #eee; border-radius: 8px;">
+                        <h4 style="color: #5d4037; margin-bottom: 15px;">Basic CatDrone</h4>
+                        <div style="font-size: 2rem; color: #ff9800; margin-bottom: 15px;">$149.99</div>
+                        <ul style="list-style-type: none; padding: 0; text-align: left; margin-bottom: 20px;">
+                            <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: #4CAF50;">✓</span> 
+                                Standard Flattened Cat
+                            </li>
+                            <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: #4CAF50;">✓</span> 
+                                Basic Drone Hardware
+                            </li>
+                            <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: #4CAF50;">✓</span> 
+                                15-Minute Flight Time
+                            </li>
+                            <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: #F44336;">✗</span> 
+                                No Camera
+                            </li>
+                        </ul>
+                        <button class="btn">Select Package</button>
+                    </div>
+                    
+                    <div style="text-align: center; padding: 20px; border: 2px solid #ff9800; border-radius: 8px; position: relative; box-shadow: 0 4px 15px rgba(255, 152, 0, 0.2);">
+                        <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background-color: #ff9800; color: white; padding: 5px 15px; border-radius: 20px; font-weight: bold;">MOST POPULAR</div>
+                        <h4 style="color: #5d4037; margin-bottom: 15px;">Premium CatDrone</h4>
+                        <div style="font-size: 2rem; color: #ff9800; margin-bottom: 15px;">$249.99</div>
+                        <ul style="list-style-type: none; padding: 0; text-align: left; margin-bottom: 20px;">
+                            <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: #4CAF50;">✓</span> 
+                                Premium Flattened Cat
+                            </li>
+                            <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: #4CAF50;">✓</span> 
+                                Advanced Drone System
+                            </li>
+                            <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: #4CAF50;">✓</span> 
+                                20-Minute Flight Time
+                            </li>
+                            <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: #4CAF50;">✓</span> 
+                                HD Camera Included
+                            </li>
+                        </ul>
+                        <button class="btn">Select Package</button>
+                    </div>
+                    
+                    <div style="text-align: center; padding: 20px; border: 1px solid #eee; border-radius: 8px;">
+                        <h4 style="color: #5d4037; margin-bottom: 15px;">Ultimate CatDrone</h4>
+                        <div style="font-size: 2rem; color: #ff9800; margin-bottom: 15px;">$349.99</div>
+                        <ul style="list-style-type: none; padding: 0; text-align: left; margin-bottom: 20px;">
+                            <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: #4CAF50;">✓</span> 
+                                Custom Flattened Cat
+                            </li>
+                            <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: #4CAF50;">✓</span> 
+                                Professional Drone System
+                            </li>
+                            <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: #4CAF50;">✓</span> 
+                                30-Minute Flight Time
+                            </li>
+                            <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: #4CAF50;">✓</span> 
+                                4K Camera with Stabilization
+                            </li>
+                        </ul>
+                        <button class="btn">Select Package</button>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 50px; background-color: #fff3e0; border-radius: 10px; padding: 30px; text-align: center;">
+                <h3 style="color: #5d4037; margin-bottom: 20px;">Need to Convert Your Own Cat?</h3>
+                <p style="margin-bottom: 20px;">Already have a flattened cat that you'd like to convert to a drone? We offer conversion kits and professional installation services.</p>
+                <a href="#contact" class="btn">Contact Us for Custom Conversions</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get in Touch</h2>
+                <p>Have questions or special requests? Reach out to us and we'll be happy to help!</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h2>Contact Information</h2>
+                    <p>Whether you're looking to place an order, inquire about custom designs, or just say hello, we'd love to hear from you. Fill out the form or use our contact details below to get in touch.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>123 Craft Lane, Stitchville, CA 90210</p>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <p>+1 (555) 123-4567</p>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <p>info@cuddlycreations.com</p>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <p>Monday-Friday: 9am-5pm<br>Saturday: 10am-4pm<br>Sunday: Closed</p>
+                        </div>
+                    </div>
+                </div>
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" name="subject">
+                            <option value="general">General Inquiry</option>
+                            <option value="order">Order Information</option>
+                            <option value="custom">Custom Order Request</option>
+                            <option value="catdrone">CatDrone Conversion</option>
+                            <option value="wholesale">Wholesale Inquiry</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <div class="footer-logo">Hammer<span>DCat</span></div>
+                    <p>Handcrafted stuffed cats made with premium materials and filled with love. Each creation is unique and carefully made to bring joy to your home.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#process">Our Process</a></li>
+                        <li><a href="#catdrone">CatDrone</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Products</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Classic Cats</a></li>
+                        <li><a href="#">Premium Collection</a></li>
+                        <li><a href="#">Custom Designs</a></li>
+                        <li><a href="#">CatDrone Systems</a></li>
+                        <li><a href="#">Limited Editions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Customer Care</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Return Policy</a></li>
+                        <li><a href="#">Care Instructions</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 HammerDCat. All rights reserved. No cats were harmed in our flattening process.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Cart functionality
+        const cartIcon = document.querySelector('.cart-icon');
+        const cartDropdown = document.querySelector('.cart-dropdown');
+        const cartItemsContainer = document.querySelector('.cart-items');
+        const cartCount = document.querySelector('.cart-count');
+        const cartTotal = document.querySelector('.cart-total span:last-child');
+        const checkoutBtn = document.querySelector('.checkout-btn');
+        const clearBtn = document.querySelector('.clear-btn');
+        const addToCartBtns = document.querySelectorAll('.add-to-cart-btn');
+        
+        let cart = [];
+        
+        // Toggle cart dropdown
+        cartIcon.addEventListener('click', (e) => {
+            e.stopPropagation();
+            cartDropdown.classList.toggle('active');
+        });
+        
+        // Close cart dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!cartDropdown.contains(e.target) && !cartIcon.contains(e.target)) {
+                cartDropdown.classList.remove('active');
+            }
+        });
+        
+        // Add to cart
+        addToCartBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const productCard = btn.closest('.product-card');
+                const id = productCard.dataset.id;
+                const name = productCard.dataset.name;
+                const price = parseFloat(productCard.dataset.price);
+                const img = productCard.querySelector('.product-img img').src;
+                
+                // Check if product is already in cart
+                const existingItem = cart.find(item => item.id === id);
+                
+                if (existingItem) {
+                    existingItem.quantity++;
+                } else {
+                    cart.push({
+                        id,
+                        name,
+                        price,
+                        img,
+                        quantity: 1
+                    });
+                }
+                
+                updateCart();
+                
+                // Show cart dropdown
+                cartDropdown.classList.add('active');
+                
+                // Add animation to cart icon
+                cartIcon.classList.add('pulse');
+                setTimeout(() => {
+                    cartIcon.classList.remove('pulse');
+                }, 500);
+            });
+        });
+        
+        // Remove from cart
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCart();
+        }
+        
+        // Update cart
+        function updateCart() {
+            // Clear cart items
+            cartItemsContainer.innerHTML = '';
+            
+            // Calculate total items and price
+            let totalItems = 0;
+            let totalPrice = 0;
+            
+            cart.forEach(item => {
+                totalItems += item.quantity;
+                totalPrice += item.price * item.quantity;
+                
+                // Create cart item element
+                const cartItemElement = document.createElement('div');
+                cartItemElement.classList.add('cart-item');
+                cartItemElement.innerHTML = `
+                    <div class="cart-item-img">
+                        <img src="${item.img}" alt="${item.name}">
+                    </div>
+                    <div class="cart-item-info">
+                        <div class="cart-item-title">${item.name}</div>
+                        <div class="cart-item-price">$${item.price.toFixed(2)} x ${item.quantity}</div>
+                    </div>
+                    <div class="cart-item-remove" data-id="${item.id}">
+                        <i class="fas fa-times"></i>
+                    </div>
+                `;
+                
+                // Add to cart items container
+                cartItemsContainer.appendChild(cartItemElement);
+                
+                // Add remove event listener
+                cartItemElement.querySelector('.cart-item-remove').addEventListener('click', () => {
+                    removeFromCart(item.id);
+                });
+            });
+            
+            // Update cart count and total
+            cartCount.textContent = totalItems;
+            cartTotal.textContent = `$${totalPrice.toFixed(2)}`;
+            
+            // Show empty cart message if cart is empty
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p>Your cart is empty</p>';
+                cartCount.textContent = '0';
+            }
+        }
+        
+        // Checkout button
+        checkoutBtn.addEventListener('click', () => {
+            if (cart.length === 0) return;
+            
+            alert('Proceeding to checkout...');
+            // Here you would redirect to checkout page
+        });
+        
+        // Clear cart button
+        clearBtn.addEventListener('click', () => {
+            if (cart.length === 0) return;
+            
+            cart = [];
+            updateCart();
+        });
+        
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Contact form
+        const contactForm = document.getElementById('contact-form');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Here you would typically send the form data to a server
+            alert('Thank you for your message! We will get back to you soon.');
+            contactForm.reset();
+        });
+
+        // Add sticky header effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
